@@ -11,10 +11,10 @@ export class AuthService {
   private jwtHelper = new JwtHelperService();
   constructor(private http: HttpClient) {
 
-    const userData = localStorage.getItem('USER') as string | null;
-    const token = userData ? JSON.parse(userData) : null;
+    // const userData = localStorage.getItem('USER') as string | null;
+    // const token = userData ? JSON.parse(userData) : null;
 
-    this.tokendata = token.token
+    // this.tokendata = token.token
    }
 
   postMethod(apiname:String, data:object) {
@@ -30,16 +30,18 @@ export class AuthService {
   
 
   isTokenExpired() {
-
+    
     const userData = localStorage.getItem('USER') as string | null;
     const token = userData ? JSON.parse(userData) : null;
-   
-    if (!token.token) {
+   let istoken = token?token.token:null
+    if (!istoken) {
       return true; 
+    }else{
+      return  this.jwtHelper.isTokenExpired(token.token)
     }
-let expired = this.jwtHelper.isTokenExpired(token.token)
+ 
 
-    return expired ;
+
   }
 
   }

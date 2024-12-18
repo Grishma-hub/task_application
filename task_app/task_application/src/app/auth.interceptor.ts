@@ -15,9 +15,9 @@ export class AuthInterceptor implements HttpInterceptor {
     const userData = localStorage.getItem('USER') as string | null;
     const token = userData ? JSON.parse(userData) : null;
     
-          console.log(token.token,"token")
+        
 
-    if (token.token) {
+    if (token&&token.token) {
      
       const clonedRequest = request.clone({
         setHeaders: {

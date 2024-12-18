@@ -17,7 +17,7 @@
       <tbody>
         <tr  *ngFor="let data of tasklist">
           <td>{{data.title}}</td>
-          <td>{{data.createdAt}}</td>
+          <td>{{data.createdAt | date:'short' }}</td>
           <td>{{data.status}}</td>
           <td><button type="submit" class="btn-primary" (click)="gotoeditpage(data)"> Edit </button>  &nbsp; <button type="submit" (click)="deletetask(data)"> Delete </button></td>
         </tr>
