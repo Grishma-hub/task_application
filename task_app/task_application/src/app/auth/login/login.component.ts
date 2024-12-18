@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -9,7 +10,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
   loginForm!: FormGroup; 
-  constructor(private fb: FormBuilder,private authservice: AuthService) {
+  constructor(private fb: FormBuilder,private authservice: AuthService,private router: Router) {
 
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
@@ -30,7 +31,7 @@ export class LoginComponent implements OnInit {
 
    
     
-      // this.router.navigate(['app/dashboard']);
+      this.router.navigate(['task/']);
     }
    
 

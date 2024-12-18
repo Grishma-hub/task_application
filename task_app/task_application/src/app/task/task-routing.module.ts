@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { EditTaskComponent } from './edit-task/edit-task.component';
 import { AddTaskComponent } from './add-task/add-task.component';
 import { TaskListComponent } from './task-list/task-list.component';
+import { AuthGuard } from '../auth.guard';
 
 
 const routes: Routes = [
@@ -10,9 +11,9 @@ const routes: Routes = [
    {
       path: '',
       children: [
-        { path: '' ,component: TaskListComponent  },
-        { path: 'task_update/:taskId' ,component: EditTaskComponent  },
-          { path: 'task_create' ,component: AddTaskComponent },
+        { path: '' ,component: TaskListComponent ,canActivate: [AuthGuard] },
+        { path: 'task_update/:taskId' ,component: EditTaskComponent ,canActivate: [AuthGuard] },
+          { path: 'task_create' ,component: AddTaskComponent,canActivate: [AuthGuard] },
         
       
   ]
