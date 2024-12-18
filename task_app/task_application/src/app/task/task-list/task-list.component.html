@@ -1,0 +1,36 @@
+
+
+<div class="container">
+    <div class="header">
+      <button class="add-task-btn" routerLink="/task/task_create">Add Task</button>
+    </div>
+    <table class="task-table">
+      <thead>
+        <tr >  
+          <th>Task Title </th>
+          <th>Create Date </th>
+       
+          <th>Status</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr  *ngFor="let data of tasklist">
+          <td>{{data.title}}</td>
+          <td>{{data.createdAt}}</td>
+          <td>{{data.status}}</td>
+          <td><button type="submit" class="btn-primary" (click)="gotoeditpage(data)"> Edit </button>  &nbsp; <button type="submit" (click)="deletetask(data)"> Delete </button></td>
+        </tr>
+        <!-- <tr>
+          <td>2</td>
+          <td>Task 2</td>
+          <td>2024-12-22</td>
+          <td>In Progress</td>
+        </tr> -->
+      </tbody>
+    </table>
+  </div>
+
+
+
+
